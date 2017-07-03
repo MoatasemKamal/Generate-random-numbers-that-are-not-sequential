@@ -1,0 +1,73 @@
+public class Random {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        RandomMethod(5);
+
+    }
+
+    public static void RandomMethod(int RangeNumber) {
+        int RangNumber = RangeNumber;
+        int c = 0;
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        for (int i = 0; i < RangNumber * 4; i++) {
+            int random = (int) (Math.random() * RangNumber + 1);
+            if (i == c) {
+                numbers.add(random);
+            } else if (i != c && numbers.size() != RangNumber) {
+
+                for (int j = 0; j < numbers.size(); j++) {
+                    if (random == numbers.get(j)) {
+
+                        break;
+                    } else if (random != numbers.get(j) && j == numbers.size() - 1) {
+                        numbers.add(random);
+                        j = 0;
+                        break;
+                    }
+                }
+            } else {
+                break;
+            }
+
+        }
+        int count = 0;
+        int v = 0;
+        ArrayList<Integer> Newnum = new ArrayList<Integer>();
+        ArrayList<Integer> Increase = new ArrayList<Integer>();
+        int value1, value2;
+        int j = 0, k = 0;
+
+        for (int i = 0; i < numbers.size(); i++) {
+
+            if (i == count) {
+                Newnum.add(numbers.get(i));
+                count--;
+            } else if (i != v) {
+                value1 = Newnum.get(j) - numbers.get(i);
+                if (value1 >= 2 || value1 <= -2) {
+                    j++;
+
+                    Newnum.add(numbers.get(i));
+
+                } else if (value1 == 1 || value1 == -1) {
+                    Increase.add(numbers.get(i));
+                }
+
+            }
+        }
+        
+        for (Integer integer : Increase) {
+            System.out.println(integer);
+            
+        }
+        for (Integer integer : Newnum) {
+                        System.out.println(integer);
+
+        }
+    }
+}
